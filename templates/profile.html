@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="profile">
+
+    <div class="profile-wrapper">
+        <div class="profile-container">
+            <h1>User Profile</h1>
+            <div class="profile-info">
+                <div class="info-item">
+                    <label for="username">Username</label>
+                    <div id="username" class="info-value">{{user.username }}</div>
+                </div>
+                <div class="info-item">
+                    <label for="email">Email</label>
+                    <div id="email" class="info-value">{{user.email }}</div>
+                </div>
+                <div class="info-item">
+                    <label for="phone">Phone Number</label>
+                    <div id="phone" class="info-value">{{user.phone}}</div>
+                </div>
+                <div class="info-item">
+                    <label for="height">Height</label>
+                    <div id="height" class="info-value">{{ user.height }} cm</div>
+                </div>
+                <div class="info-item">
+                    <label for="weight">Weight</label>
+                    <div id="weight" class="info-value">{{ user.weight }} kg</div>
+                </div>
+                <div class="info-item">
+                    {% if user.role == 'Trainer' %}
+                    <label for="member-id">Trainer ID</label>
+                    <div id="member-id" class="info-value">{{ user.trainer_id }}</div>
+                    {% else %}
+                    <label for="member-id">Member ID</label>
+                    <div id="member-id" class="info-value">{{ user.member_id }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <button class="logout-btn"><a href="{{ url_for('logout') }}" class="anchor">Logout</a></button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+
+

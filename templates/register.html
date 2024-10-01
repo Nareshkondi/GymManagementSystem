@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="register">
+    <div class="register-warpper" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('{{ url_for('static', filename='images/img2.jpg') }}');">
+        <div class="wrapper reg-wrapper">
+            
+            <form method="POST" action="{{ url_for('register') }}">
+                <h1>Register</h1>
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="input-box">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+                <div class="input-box">
+                    <input type="number" step="0.01" name="height" placeholder="Height (cm)" required>
+                </div>
+                <div class="input-box">
+                    <input type="number" step="0.01" name="weight" placeholder="Weight (kg)" required>
+                </div>
+                
+                <div class="custon-select"> 
+                    <select class="input-box" name="role" required>
+                        <option value="Member">Member</option>
+                        <option value="Trainer">Trainer</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="trainer_id" placeholder="Trainer ID (for Trainers)" style="display: none;">
+                </div>
+                <div class="input-box">
+                    <input type="text" name="member_id" placeholder="Member ID (for Members)" style="display: none;">
+                </div>
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

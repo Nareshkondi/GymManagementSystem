@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="trainer-dashboard" class="dashboard-section">
+    <div class="dashboard-container">
+        <h2 class="dashboard-title">Trainer Dashboard</h2>
+        <table class="student-table">
+            <thead>
+                <tr class="table-header-row">
+                    <th class="table-header">Username</th>
+                    <th class="table-header">Member ID</th>
+                    <th class="table-header">Attendance</th>
+                </tr>
+            </thead>
+            <tbody class="table-body">
+                {% for student in students %}
+                <tr class="student-row">
+                    <td class="table-cell" data-label="Username">{{ student.username }}</td>
+                    <td class="table-cell" data-label="Member ID">{{ student.member_id }}</td>
+                    <td class="table-cell" data-label="Attendance">
+                        <form method="POST" action="{{ url_for('mark_attendance') }}" class="attendance-form">
+                            <input type="hidden" name="user_id" value="{{ student.id }}">
+                            <select name="status" class="attendance-select">
+                                <option value="present">Present</option>
+                                <option value="absent">Absent</option>
+                            </select>
+                            <button type="submit" class="attendance-button">Mark</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
+
+
